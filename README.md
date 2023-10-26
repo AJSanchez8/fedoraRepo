@@ -1,0 +1,1 @@
+# Pasos a seguir para montar un servidor con Fedora
