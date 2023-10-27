@@ -13,3 +13,26 @@
 9. __El par de claves__ es un paso muy importante, que te permite conectarte a esa imagen que estas creando. Es importante no perderla. ya que mediante ```ssh -i {enlace de la clave} nombreImagen@ipFlotanteAsignada``` es como nos conectamos.
 10. Confirmamos y ya tendriamos nuestro servidor creado.
 11. El paso final sería asociarte una __IP Flotante__, que se crea de forma sencilla aquí ![IP Flotante](./img/image4.png) donde a mi me sale, __Desasociar IP__, debe salir __Asociar IP Flotante__ si no tienes una asociada.
+
+### Ejecución y explicación de comandos.
+
+#### Servidor apache.
+
+En el archivo [install_lamp.sh](./script/install_lamp.sh) tenemos todo lo necesario para la creación de un servidor con apache, actualizamos Fedora, instalamos httpd, MySQL y PHP y reiniciamos el servidor.
+
+#### Despliegue de aplicación
+
+Tenemos un archivo oculto dentro de la carpeta script llamado __.env__ donde tenemos una serie de variables que vamos a utilizar más adelante.
+
+Lo primero que tenemos que hacer es importar ese archivo con el comando ```source .env```
+
+Borramos las instalaciones previas para que no de fallo y clonamos el repositorio (en este caso),  y movemos el codigo desde la carpeta contenedora a la carpeta __/var/www/html__.
+
+Ahora vamos a configurar el archivo config.php donde tenemos las conexiones a B.B.D.D. 
+
+Ahora importamos el script SQL para crear la tabla
+
+Creamos el usuario y le damos los privilegios para poder trabajar ocn las tablas, en este caso le damos todos los permisos para todas las tablas
+
+El último paso es cambiar el contexto (ya que fedora usa una seguridad _"mejorada"_ y tiene un paso de seguridad extra con respecto a Ubuntu).
+
