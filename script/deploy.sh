@@ -37,6 +37,4 @@ mysql -u root <<< "CREATE USER $DB_USER@'%' IDENTIFIED BY '$DB_PASS'"
 mysql -u root <<< "GRANT ALL PRIVILEGES ON $DB_NAME.* TO $DB_USER@'%'"
 
 # Cambiamos grupos de seguridad para que no de acceso denegado
-semanage fcontext -a -t httpd_sys_script_exec_t "/var/www/html(/.*)?"
-
-restorecon -Rv /var/www/html
+chcon -R -t httpd_sys_content_t /var/www/html/
