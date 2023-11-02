@@ -17,6 +17,7 @@
 ### Ejecución y explicación de comandos.
 
 #### Servidor apache.
+##### No explico en profundidad el install_lamp.sh ya que lo explico en la [practica-01-02](https://github.com/AJSanchez8/practica-01-02-daw), los pasos son los mismos, pero en este caso usamos el gestor de paquetes dnf
 
 En el archivo [install_lamp.sh](./script/install_lamp.sh) tenemos todo lo necesario para la creación de un servidor con apache, actualizamos Fedora, instalamos httpd, MySQL y PHP y reiniciamos el servidor.
 
@@ -35,4 +36,5 @@ Ahora importamos el script SQL para crear la tabla
 Creamos el usuario y le damos los privilegios para poder trabajar ocn las tablas, en este caso le damos todos los permisos para todas las tablas
 
 El último paso es cambiar el contexto (ya que fedora usa una seguridad _"mejorada"_ y tiene un paso de seguridad extra con respecto a Ubuntu).
+```chcon -R -t httpd_sys_content_t /var/www/html/```
 
